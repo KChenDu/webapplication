@@ -8,18 +8,31 @@ class App extends Component {
     counters: [
       {
         id: 1,
-        value: 0,
-        name: "IBOV",
-        datapath: "data/example3.csv"
+        name: "Calendário"
       },
       {
         id: 2,
-        value: 0,
-        name: "PETR3",
-        datapath: "data/example30.csv"
+        name: "Próximos eventos"
       },
-      { id: 3, value: 0, name: "CNTO3", datapath: "data/example32.csv" },
-      { id: 4, value: 0, name: "HGTX3", datapath: "data/example33.csv" }
+      { id: 3, name: "Empresas" },
+      {
+        id: 4,
+        name: "Área do meu interesse"
+      },
+      { id: 5, name: "Meu perfil" }
+    ],
+    empresas: [
+      { id: 1, name: "Bain & Co", date: "25/jun/19" },
+      {
+        id: 2,
+        name: "Facebook",
+        date: "12/jun/19"
+      },
+      {
+        id: 3,
+        name: "Morgan Stanley",
+        date: "13/jul/19"
+      }
     ]
   };
 

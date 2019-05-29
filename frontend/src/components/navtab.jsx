@@ -2,8 +2,28 @@ import React, { Component } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Counter from "./counter";
+import Calendar from "./tabitems/calendar";
+import Events from "./tabitems/nextevents";
+import Empresas from "./tabitems/empresas";
+import PersonalInterests from "./tabitems/myinterest";
+import Profile from "./tabitems/profile";
 
 class NavTab extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      names: []
+    };
+  }
+  tabdecision = counter => {
+    if (counter.name == "Calendário") return <Calendar />;
+    else if (counter.name == "Próximos eventos") return <Events />;
+    else if (counter.name == "Empresas") return <Empresas />;
+    else if (counter.name == "Área do meu interesse")
+      return <PersonalInterests />;
+    else if (counter.name == "Meu perfil") return <Profile />;
+  };
+
   render() {
     const {
       onReset,
@@ -15,10 +35,10 @@ class NavTab extends Component {
     return (
       <div>
         <img
-          src={require("./LogoGrande.jpg")}
+          src={require("./CEEAPP.jpg")}
           alt=""
-          height="150"
-          width="210"
+          height="53"
+          width="150"
           align="right"
         />
         <Tabs>
@@ -36,15 +56,7 @@ class NavTab extends Component {
             ))}
           </TabList>
           {counters.map(counter => (
-            <TabPanel>
-              <Counter
-                key={counter.id}
-                onDelete={onDelete}
-                onIncrement={onIncrement}
-                onDecrement={onDecrement}
-                counter={counter}
-              />
-            </TabPanel>
+            <TabPanel>{this.tabdecision(counter)}</TabPanel>
           ))}
         </Tabs>
       </div>
