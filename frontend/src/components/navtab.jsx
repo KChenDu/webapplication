@@ -15,15 +15,36 @@ class NavTab extends Component {
       names: []
     };
   }
-  tabdecision = (counter, calendarpaths, personalinterest, onInterest) => {
+  tabdecision = (
+    counter,
+    calendarpaths,
+    personalinterest,
+    onInterest,
+    profilephoto,
+    onPhoto,
+    empresas
+  ) => {
     if (counter.name == "Calendário")
       return <Calendar calendarpaths={calendarpaths} />;
     else if (counter.name == "Próximos eventos") return <Events />;
-    else if (counter.name == "Empresas") return <Empresas />;
+    else if (counter.name == "Empresas")
+      return <Empresas empresas={empresas} />;
     else if (counter.name == "Área do meu interesse")
-      return <PersonalInterests personalinterest={personalinterest} />;
+      return (
+        <PersonalInterests
+          personalinterest={personalinterest}
+          empresas={empresas}
+        />
+      );
     else if (counter.name == "Meu perfil")
-      return <Profile onInterest={onInterest} />;
+      return (
+        <Profile
+          personalinterest={personalinterest}
+          onInterest={onInterest}
+          profilephoto={profilephoto}
+          onPhoto={onPhoto}
+        />
+      );
   };
 
   render() {
@@ -31,7 +52,10 @@ class NavTab extends Component {
       counters,
       calendarpaths,
       personalinterest,
-      onInterest
+      onInterest,
+      profilephoto,
+      onPhoto,
+      empresas
     } = this.props;
     return (
       <div>
@@ -62,7 +86,10 @@ class NavTab extends Component {
                 counter,
                 calendarpaths,
                 personalinterest,
-                onInterest
+                onInterest,
+                profilephoto,
+                onPhoto,
+                empresas
               )}
             </TabPanel>
           ))}

@@ -2,17 +2,9 @@ import React, { Component } from "react";
 
 class Profile extends Component {
   state = {
-    image: null,
     favarea: "Tecnologia/Computação"
   };
 
-  onImageChange = event => {
-    if (event.target.files && event.target.files[0]) {
-      this.setState({
-        image: URL.createObjectURL(event.target.files[0])
-      });
-    }
-  };
   handleChange = event => {
     this.setState({ favarea: event.target.value });
   };
@@ -22,19 +14,19 @@ class Profile extends Component {
   };
 
   render() {
-    const { onInterest } = this.props;
+    const { personalinterest, onInterest, profilephoto, onPhoto } = this.props;
     return (
       <div>
         <h6>
           <input
             type="file"
-            onChange={this.onImageChange}
+            onChange={onPhoto}
             className="filetype"
             id="group_image"
           />
         </h6>
         <h4>
-          <img id="target" src={this.state.image} />
+          <img id="target" src={profilephoto} />
         </h4>{" "}
         <center>
           <h5>
@@ -44,6 +36,7 @@ class Profile extends Component {
                 <select
                   favarea={this.state.favarea}
                   onChange={this.handleChange}
+                  defaultValue={personalinterest}
                 >
                   <option favarea="tech">Tecnologia/Computação</option>
                   <option favarea="finances">Mercado Financeiro</option>

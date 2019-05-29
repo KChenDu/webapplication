@@ -22,15 +22,17 @@ class App extends Component {
       { id: 5, name: "Meu perfil" }
     ],
     empresas: [
-      { id: 1, name: "Bain & Co", date: "25/jun/19" },
+      { id: 1, name: "Bain & Co", type: "consulting", date: "25/jun/19" },
       {
         id: 2,
         name: "Facebook",
+        type: "tech",
         date: "12/jun/19"
       },
       {
         id: 3,
         name: "Morgan Stanley",
+        type: "finances",
         date: "13/jul/19"
       }
     ],
@@ -40,7 +42,8 @@ class App extends Component {
       { path: "./Bim2_1_4.jpg" },
       { path: "./Bim2_5_8.jpg" }
     ],
-    personalinterest: "Mercado financeiro"
+    personalinterest: "Tecnologia/Computação",
+    profilephoto: null
   };
 
   handleReset = () => {
@@ -53,6 +56,14 @@ class App extends Component {
 
   changeInterest = personalinterest => {
     this.setState({ personalinterest: personalinterest });
+  };
+
+  changePhoto = event => {
+    if (event.target.files && event.target.files[0]) {
+      this.setState({
+        profilephoto: URL.createObjectURL(event.target.files[0])
+      });
+    }
   };
 
   handleIncrement = counter => {
@@ -83,6 +94,8 @@ class App extends Component {
           counters={this.state.counters}
           calendarpaths={this.state.calendarpaths}
           empresas={this.state.empresas}
+          profilephoto={this.state.profilephoto}
+          onPhoto={this.changePhoto}
           personalinterest={this.state.personalinterest}
           onInterest={this.changeInterest}
         />
