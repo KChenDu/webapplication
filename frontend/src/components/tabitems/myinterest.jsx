@@ -3,10 +3,11 @@ import React, { Component } from "react";
 class PersonalInterests extends Component {
   state = {};
   render() {
+    const { personalinterest } = this.props;
     return (
       <div>
         <h4>
-          <center>{"Você está nos seus interesses"}</center>
+          <center>{"Seu interesse é em " + personalinterest}</center>
         </h4>
       </div>
     );

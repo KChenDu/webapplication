@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Profile extends Component {
   state = {
     image: null,
-    favarea: "coconut"
+    favarea: "Tecnologia/Computação"
   };
 
   onImageChange = event => {
@@ -22,6 +22,7 @@ class Profile extends Component {
   };
 
   render() {
+    const { onInterest } = this.props;
     return (
       <div>
         <h6>
@@ -37,7 +38,7 @@ class Profile extends Component {
         </h4>{" "}
         <center>
           <h5>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={event => onInterest(this.state.favarea)}>
               <label>
                 Escolha sua área de interesse:
                 <select

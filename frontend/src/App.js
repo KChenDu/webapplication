@@ -39,7 +39,8 @@ class App extends Component {
       { path: null },
       { path: "./Bim2_1_4.jpg" },
       { path: "./Bim2_5_8.jpg" }
-    ]
+    ],
+    personalinterest: "Mercado financeiro"
   };
 
   handleReset = () => {
@@ -48,6 +49,10 @@ class App extends Component {
       return c;
     });
     this.setState({ counters });
+  };
+
+  changeInterest = personalinterest => {
+    this.setState({ personalinterest: personalinterest });
   };
 
   handleIncrement = counter => {
@@ -78,6 +83,8 @@ class App extends Component {
           counters={this.state.counters}
           calendarpaths={this.state.calendarpaths}
           empresas={this.state.empresas}
+          personalinterest={this.state.personalinterest}
+          onInterest={this.changeInterest}
         />
         {/*}       <main className="container">
           <Counters

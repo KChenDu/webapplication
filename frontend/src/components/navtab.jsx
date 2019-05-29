@@ -15,22 +15,23 @@ class NavTab extends Component {
       names: []
     };
   }
-  tabdecision = counter => {
-    if (counter.name == "Calendário") return <Calendar />;
+  tabdecision = (counter, calendarpaths, personalinterest, onInterest) => {
+    if (counter.name == "Calendário")
+      return <Calendar calendarpaths={calendarpaths} />;
     else if (counter.name == "Próximos eventos") return <Events />;
     else if (counter.name == "Empresas") return <Empresas />;
     else if (counter.name == "Área do meu interesse")
-      return <PersonalInterests />;
-    else if (counter.name == "Meu perfil") return <Profile />;
+      return <PersonalInterests personalinterest={personalinterest} />;
+    else if (counter.name == "Meu perfil")
+      return <Profile onInterest={onInterest} />;
   };
 
   render() {
     const {
-      onReset,
       counters,
-      onDelete,
-      onIncrement,
-      onDecrement
+      calendarpaths,
+      personalinterest,
+      onInterest
     } = this.props;
     return (
       <div>
@@ -56,7 +57,14 @@ class NavTab extends Component {
             ))}
           </TabList>
           {counters.map(counter => (
-            <TabPanel>{this.tabdecision(counter)}</TabPanel>
+            <TabPanel>
+              {this.tabdecision(
+                counter,
+                calendarpaths,
+                personalinterest,
+                onInterest
+              )}
+            </TabPanel>
           ))}
         </Tabs>
       </div>

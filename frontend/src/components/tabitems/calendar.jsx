@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 class Calendar extends Component {
   state = {};
   render() {
+    const { calendarpaths } = this.props;
     return (
       <div>
         <h6>
@@ -76,22 +77,14 @@ class Calendar extends Component {
                   <TabPanel>
                     {" "}
                     <center>
-                      <img
-                        src={require("./Bim2_1_4.jpg")}
-                        alt=""
-                        class="center"
-                      />
+                      <img src={calendarpaths[2].path} alt="" class="center" />
                     </center>
                   </TabPanel>
 
                   <TabPanel>
                     {" "}
                     <center>
-                      <img
-                        src={require("./Bim2_5_8.jpg")}
-                        alt=""
-                        class="center"
-                      />
+                      <img src={calendarpaths[3].path} alt="" class="center" />
                     </center>
                   </TabPanel>
                 </Tabs>
