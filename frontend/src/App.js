@@ -33,6 +33,12 @@ class App extends Component {
         name: "Morgan Stanley",
         date: "13/jul/19"
       }
+    ],
+    calendarpaths: [
+      { path: null },
+      { path: null },
+      { path: "./Bim2_1_4.jpg" },
+      { path: "./Bim2_5_8.jpg" }
     ]
   };
 
@@ -70,10 +76,8 @@ class App extends Component {
       <React.Fragment>
         <NavTab
           counters={this.state.counters}
-          onReset={this.handleReset}
-          onIncrement={this.handleIncrement}
-          onDecrement={this.handleDecrement}
-          onDelete={this.handleDelete}
+          calendarpaths={this.state.calendarpaths}
+          empresas={this.state.empresas}
         />
         {/*}       <main className="container">
           <Counters

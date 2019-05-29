@@ -1,13 +1,60 @@
 import React, { Component } from "react";
 
 class Profile extends Component {
-  state = {};
+  state = {
+    image: null,
+    favarea: "coconut"
+  };
+
+  onImageChange = event => {
+    if (event.target.files && event.target.files[0]) {
+      this.setState({
+        image: URL.createObjectURL(event.target.files[0])
+      });
+    }
+  };
+  handleChange = event => {
+    this.setState({ favarea: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+  };
+
   render() {
     return (
       <div>
+        <h6>
+          <input
+            type="file"
+            onChange={this.onImageChange}
+            className="filetype"
+            id="group_image"
+          />
+        </h6>
         <h4>
-          <center>{"Você está no seu perfil"}</center>
-        </h4>
+          <img id="target" src={this.state.image} />
+        </h4>{" "}
+        <center>
+          <h5>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Escolha sua área de interesse:
+                <select
+                  favarea={this.state.favarea}
+                  onChange={this.handleChange}
+                >
+                  <option favarea="tech">Tecnologia/Computação</option>
+                  <option favarea="finances">Mercado Financeiro</option>
+                  <option favarea="consulting">Consultoria</option>
+                  <option favarea="industry">Indústria</option>
+                  <option favarea="education">Educação</option>
+                </select>
+              </label>
+              <input type="submit" favarea="Submit" />
+            </form>
+          </h5>
+        </center>
       </div>
     );
   }
