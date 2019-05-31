@@ -18,12 +18,15 @@ class Profile extends Component {
     return (
       <div>
         <h6>
-          <input
-            type="file"
-            onChange={onPhoto}
-            className="filetype"
-            id="group_image"
-          />
+          <label>
+            Escolha sua foto de perfil: <p> </p>
+            <input
+              type="file"
+              onChange={onPhoto}
+              className="filetype"
+              id="group_image"
+            />
+          </label>
         </h6>
         <h4>
           <img id="target" src={profilephoto} />

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Counter from "./counter";
 import Calendar from "./tabitems/calendar";
 import Events from "./tabitems/nextevents";
 import Empresas from "./tabitems/empresas";
@@ -63,7 +62,7 @@ class NavTab extends Component {
           src={require("./CEEAPP.jpg")}
           alt=""
           height="53"
-          width="150"
+          width="200"
           align="right"
         />
         <Tabs>

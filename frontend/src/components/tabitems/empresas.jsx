@@ -12,7 +12,7 @@ class Empresas extends Component {
         <h5>
           <center>
             {empresas.map(empresa => (
-              <h2>{empresa.name + ", palestra em: " + empresa.date}</h2>
+              <h2>{empresa.name + ", em: " + empresa.date}</h2>
             ))}
           </center>
         </h5>

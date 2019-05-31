@@ -13,7 +13,7 @@ class PersonalInterests extends Component {
 
   decisionEmpresa = (empresa, personalinterest) => {
     if (mapEmpresas[empresa.type] == personalinterest)
-      return <h2>{empresa.name + ", palestra em: " + empresa.date}</h2>;
+      return <h2>{empresa.name + ", " + empresa.date}</h2>;
   };
 
   render() {
