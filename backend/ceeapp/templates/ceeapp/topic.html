@@ -4,18 +4,6 @@
 
   <p>Topic: {{ topic }}</p>
 
-  <ul>
-    {% for topic in topics %}
-    <li>
-      <a href="{% url 'ceeapp:topic' topic.id %}">{{ topic }}</a>
-    </li>
-    {% empty %}
-    <li>No topics have been added yet.</li>
-    {% endfor %}
-  </ul>
-
-  <a href="{% url 'ceeapp:new_topic' %}">Add a new topic:</a>
-
   <p>Entries:</p>
 
   <p>
