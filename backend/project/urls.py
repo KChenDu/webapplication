@@ -14,14 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+import ceeapp
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
-from ceeapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^users/', include(('users.urls', 'users'), namespace='users')),
     url(r'', include(('ceeapp.urls', 'ceeapp'), namespace='ceeapp')),
-    path('', views.index),
+    path('', ceeapp.views.index),
 ]
