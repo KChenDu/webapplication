@@ -52,4 +52,3 @@ class Event(models.Model):
     #participants = models.IntegerField(default=0)
     def __str__(self):
         return self.description
-
