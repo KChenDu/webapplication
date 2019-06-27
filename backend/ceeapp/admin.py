@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Area, Company, Event
+
+admin.site.register(Area)
+admin.site.register(Company)
+admin.site.register(Event)
