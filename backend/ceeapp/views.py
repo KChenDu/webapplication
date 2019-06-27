@@ -15,3 +15,4 @@ class CompanyViewSet(viewsets.ModelViewSet):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all().order_by('-date')
     serializer_class = EventSerializer
+
