@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NavTab from "./components/navtab";
 import "./App.css";
+import LoginPage from "./components/loginpage";
 
 class App extends Component {
   state = {
@@ -42,7 +43,8 @@ class App extends Component {
       { path: "./Bim2_5_8.jpg" }
     ],
     personalinterest: "Tecnologia/Computação",
-    profilephoto: null
+    profilephoto: null,
+    beginApp: "0"
   };
 
   handleReset = () => {
@@ -86,9 +88,14 @@ class App extends Component {
     this.setState({ counters });
   };
 
-  render() {
-    return (
-      <React.Fragment>
+  handlePage = evt => {
+    const beginApp = 1;
+    this.setState({ beginApp });
+  };
+
+  showPage = () => {
+    if (this.state.beginApp === 1) {
+      return (
         <NavTab
           counters={this.state.counters}
           calendarpaths={this.state.calendarpaths}
@@ -98,16 +105,13 @@ class App extends Component {
           personalinterest={this.state.personalinterest}
           onInterest={this.changeInterest}
         />
-        {/*}       <main className="container">
-          <Counters
-            counters={this.state.counters}
-            onReset={this.handleReset}
-            onIncrement={this.handleIncrement}
-            onDelete={this.handleDelete}
-          />
-    </main>*/}
-      </React.Fragment>
-    );
+      );
+    }
+    return <LoginPage onPage={this.handlePage} />;
+  };
+
+  render() {
+    return <React.Fragment>{this.showPage()}</React.Fragment>;
   }
 }
 
