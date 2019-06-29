@@ -27,7 +27,13 @@ class NavTab extends Component {
       return <Calendar calendarpaths={calendarpaths} />;
     else if (counter.name == "Próximos eventos") return <Events />;
     else if (counter.name == "Empresas")
-      return <Empresas empresas={empresas} />;
+      return (
+        <Empresas
+          empresas={empresas}
+          onIncrement={this.props.onIncrement}
+          onDecrement={this.props.onDecrement}
+        />
+      );
     else if (counter.name == "Área do meu interesse")
       return (
         <PersonalInterests
@@ -54,7 +60,9 @@ class NavTab extends Component {
       onInterest,
       profilephoto,
       onPhoto,
-      empresas
+      empresas,
+      onIncrement,
+      onDecrement
     } = this.props;
     return (
       <div>

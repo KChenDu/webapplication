@@ -87,53 +87,28 @@ import {
   Message,
   Segment
 } from "semantic-ui-react";
+import Login1 from "./login1";
+import Login2 from "./login2";
 
-class LoginPage extends Component {
-  state = {};
+class Login extends Component {
+  state = { login1: "1" };
+
+  handlePage = evt => {
+    const login1 = 1 - this.state.login1;
+    //console.log(login1);
+    this.setState({ login1 });
+  };
+
+  showPage = () => {
+    if (this.state.login1 == 1) {
+      return <Login1 onPage={this.handlePage} onLogin={this.props.onLogin} />;
+    }
+    return <Login2 onPage={this.handlePage} />;
+  };
+
   render() {
-    return (
-      <Grid
-        textAlign="center"
-        style={{ height: "100vh" }}
-        verticalAlign="middle"
-      >
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="teal" textAlign="center">
-            Log-in to your account
-          </Header>
-          <Form size="large">
-            <Segment stacked>
-              <Form.Input
-                fluid
-                icon="user"
-                iconPosition="left"
-                placeholder="E-mail address"
-              />
-              <Form.Input
-                fluid
-                icon="lock"
-                iconPosition="left"
-                placeholder="Password"
-                type="password"
-              />
-
-              <Button
-                color="teal"
-                fluid
-                size="large"
-                onClick={() => this.props.onPage()}
-              >
-                Login
-              </Button>
-            </Segment>
-          </Form>
-          <Message>
-            New to us? <a href="#">Sign Up</a>
-          </Message>
-        </Grid.Column>
-      </Grid>
-    );
+    return <div>{this.showPage()}</div>;
   }
 }
 
-export default LoginPage;
+export default Login;

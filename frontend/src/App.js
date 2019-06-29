@@ -22,18 +22,26 @@ class App extends Component {
       { id: 5, name: "Meu perfil" }
     ],
     empresas: [
-      { id: 1, name: "Bain & Co", type: "consulting", date: "25/jun/19" },
+      {
+        id: 1,
+        name: "Bain & Co",
+        type: "consulting",
+        date: "25/ago/19",
+        value: 0
+      },
       {
         id: 2,
         name: "Facebook",
         type: "tech",
-        date: "12/jun/19"
+        date: "12/jul/19",
+        value: 0
       },
       {
         id: 3,
         name: "Morgan Stanley",
         type: "finances",
-        date: "13/jul/19"
+        date: "13/jul/19",
+        value: 0
       }
     ],
     calendarpaths: [
@@ -67,20 +75,14 @@ class App extends Component {
     }
   };
 
-  handleIncrement = counter => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    //counters[index] = { ...counter };
-    counters[index].value++;
-    this.setState({ counters });
+  handleIncrement = empresa => {
+    empresa.value++;
+    this.setState({ empresa });
   };
 
-  handleDecrement = counter => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    //counters[index] = { ...counter };
-    counters[index].value--;
-    this.setState({ counters });
+  handleDecrement = empresa => {
+    empresa.value--;
+    this.setState({ empresa });
   };
 
   handleDelete = counterId => {
@@ -89,7 +91,7 @@ class App extends Component {
   };
 
   handlePage = evt => {
-    const beginApp = 1;
+    const beginApp = 1 - this.state.beginApp;
     this.setState({ beginApp });
   };
 
@@ -100,6 +102,8 @@ class App extends Component {
           counters={this.state.counters}
           calendarpaths={this.state.calendarpaths}
           empresas={this.state.empresas}
+          onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
           profilephoto={this.state.profilephoto}
           onPhoto={this.changePhoto}
           personalinterest={this.state.personalinterest}
@@ -107,7 +111,7 @@ class App extends Component {
         />
       );
     }
-    return <LoginPage onPage={this.handlePage} />;
+    return <LoginPage onLogin={this.handlePage} />;
   };
 
   render() {

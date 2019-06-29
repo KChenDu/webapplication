@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 
-from api.models import User
-from api.serializers import UserSerializer
-from api.permissions import IsLoggedInUserOrAdmin, IsAdminUser
+from .models import User
+from .serializers import UserSerializer
+from .permissions import IsLoggedInUserOrAdmin, IsAdminUser
 
 
 class UserViewSet(viewsets.ModelViewSet):
